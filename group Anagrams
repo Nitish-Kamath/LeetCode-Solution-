@@ -1,0 +1,33 @@
+https://leetcode.com/problems/group-anagrams/
+
+
+class Solution {
+public:
+        map<string, vector<string>> mp;
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>> res;
+
+        vector<string> temp;
+        int len = strs.size();
+
+        for (int i = 0; i < len; i++)
+        {
+            string st_dup = strs[i];
+            sort(st_dup.begin(), st_dup.end());
+
+            temp.push_back(strs[i]);
+            if (mp.find(st_dup) != mp.end())
+                mp[st_dup].push_back(strs[i]);
+            else
+                mp[st_dup] = temp;
+            temp.clear();
+        }
+
+        for (auto it : mp)
+        {
+            res.push_back(it.second);
+        }
+        return res;
+        
+    }
+};
