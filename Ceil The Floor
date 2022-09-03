@@ -1,6 +1,46 @@
 
 https://practice.geeksforgeeks.org/problems/ceil-the-floor2802/1
 
+
+
+/*
+
+heap sort takes O(nlogn) times 
+approach 01 :-
+O(n)
+naive approach
+we can sort the array 
+and then 
+if will check if element is present in vector or not if yes then we got as required 
+else
+we will take two pointer and compare arr[i] <  k and arr[i+1] > k if yes then that is required value 
+
+
+
+approach 02 : -
+O(nlogn)
+
+sort the array 
+check if key  = vt[0]
+ then return -1 and vt[0]
+if key = vt[len-1]
+return vt[len-1 and -1 
+
+and then we will traverse using binary search 
+if element found then got as required
+else
+
+floor = vt[right]
+ceil = vt[left]
+
+
+
+
+
+
+
+*/
+
 pair<int, int> getFloorAndCeil(int arr[], int n, int x) {
     pair<int,int> pr;
     sort(arr,arr+n);
