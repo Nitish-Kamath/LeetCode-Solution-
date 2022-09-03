@@ -1,0 +1,49 @@
+set contains unique as well as sorted item.
+set store element as vector (ye catch hai )
+
+set<int> st;
+st.insert(6);
+st.insert(2):
+st.insert(1);
+st.insert(5);
+st.insert(4);
+st.insert(1);
+it will contains as {1,2,4,5,6}
+
+
+
+// printing with iterator
+for(auto it = st.begin(); it != st.end();it ++)
+{
+cout<< *it<<" ";
+}
+cout<<endl;
+
+
+// printing with getting value
+
+for(auto it : st)
+{
+cout<< it <<" ";
+}
+cout<<endl;
+
+
+set<vector<int>> st_;
+
+st_.insert(st_.end(),{1,2,3,4});
+st_.insert(st_.end(),{10,20,30,40});
+
+for(auto &x : st_)
+{
+for(auto y : x)
+{
+cout<< y <<" ";
+}
+cout<<endl;
+}
+
+
+
+
+
