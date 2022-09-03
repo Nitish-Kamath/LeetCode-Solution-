@@ -1,0 +1,74 @@
+https://leetcode.com/problems/two-sum/
+
+
+/* 
+approach 1 : -
+O(n^2) 
+what we can do we can use two for loop  to get all possible pair and check if their sum equals  target
+
+approach 2 :- 
+O(n)
+if nums vector is sorted
+we can  use two pointer left and right
+left point to starting index and right points to ending index 
+we will sum two ending index  vector value  and check if  sum equals target 
+if sum > target
+right --;
+
+if sum < target
+left ++;
+
+if sum == target
+res.push_back(left);
+res.push_back(right);
+then return res;
+
+what if nums is not sorted then in that case
+not recommended but we can do like we will store index of each element in map 
+and then sort it do the same opn as defined above if sum matches target then we can find 
+c/s index in map that's it :)
+
+
+approach 3:-
+
+O(n)
+my Solution(most Optimised ) :)
+interesting one ;)
+
+we will use a map , which store jitna aur chahiye and index of jitna ho chuka hai 
+we will traverese from left to right using for loop
+and check if vt[i] is present in map or not if not then we will store target - vt[i] in map with index 
+and do the same operation with all element 
+and if found in map 
+then push_back in vector
+and 
+USE BREAK
+since one and only one solution is possible
+note :-> break barbaad karta hai first iterable(loop) ko 
+so we will come out of the for loop and return the vector to calling function;
+
+
+
+
+*/
+
+class Solution {
+public:
+    unordered_map<int, int> mp;
+
+    vector<int> twoSum(vector<int>& nums, int target) {
+         vector<int> res;
+        for (int i = 0; i < nums.size(); i++)
+        {
+        // it means if nums[i] found in map 
+        if (mp.find(nums[i]) != mp.end())
+            {
+                res.push_back(mp.find(nums[i])->second);
+                res.push_back(i);
+                break;
+            }
+            mp[target - nums[i]] = i;
+        }
+        return res;
+    }
+};
