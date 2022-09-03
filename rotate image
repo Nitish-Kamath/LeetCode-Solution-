@@ -1,0 +1,66 @@
+https://leetcode.com/problems/rotate-image/
+
+/*
+rotate image = traspose matrix + flip matrix
+
+
+for transposition rem :-
+
+( j must run from i  to col.size()- 1) 
+
+for(int i = 0; i < row.size();i++)
+{
+for(int j = i ; j < col.size();j++)
+{
+int temp = matrix[i][j];
+matrix[i][j] = matrix[j][i];
+matrix[j][i] = temp;
+}
+}
+
+
+
+
+
+*/
+
+
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        
+         // two step process
+        // transpose
+        // flip
+        int row = matrix.size();
+        int col = matrix[0].size();
+
+        // transpose matrix
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = i; j < col; j++)
+            {
+
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+
+        // flip
+        for (int i = 0; i < row; i++)
+        {
+            int left = 0;
+            int right = col - 1;
+            while (left <= right)
+            {
+                int temp = matrix[i][left];
+                matrix[i][left] = matrix[i][right];
+                matrix[i][right] = temp;
+                left++;
+                right--;
+            }
+        }
+        
+    }
+};
