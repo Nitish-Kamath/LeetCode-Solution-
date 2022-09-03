@@ -1,0 +1,54 @@
+NOTES : - 
+
+
+*************************************       MAP          ************************************************
+sorting algo takes O(nlogn) time commplexity(heapSort);
+
+unordered_map doesn't store the element in the pushing order, it has its own method and always store in that fashion only.
+
+map takes avg tc O(logn) but unordered_map takes avg O(1) tc.
+
+
+FOR TRAVERSAL ALONG MAP (no find method use)
+for(auto it = mp.begin(); it != mp.end();it++)
+{
+if(mp[it-> first] == key)
+return mp[it-> second];
+}
+
+FOR FIDING ANY KEY- VALUE
+
+if(mp.find(key) != mp.end())
+{
+return mp.find(key);
+}
+
+
+for copying array into vector
+vector<int> vt ( arr, arr + sizeof(arr)/sizeof(arr[0]));
+
+for copying vector into another vector
+vector<int> vt(vt_.begin(),vt_.end());
+
+
+
+
+************************************    VECTOR   *****************************************************
+
+vector<vector<int>> master;
+we can do to push 
+master.push_back({10,20,30,40});
+master.push_back({11,22,33,44});
+
+
+can we do simiar things with 1D array
+vector<int> vt;
+vt.push_back({10},{20},{30});
+
+approach 01:-
+preferred :-
+vector<int> res;
+res.insert(res.end(),{10, 20, 30});
+
+approach 02:-
+vector<int> v{10, 20, 30};
