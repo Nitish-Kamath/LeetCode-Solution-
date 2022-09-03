@@ -1,5 +1,62 @@
 https://leetcode.com/problems/subarray-sums-divisible-by-k/
 
+
+
+/*
+CLASS QUESTION :)))))
+
+approach 1:-
+O(n^2)
+
+what we can do we will find all possible subarray and check if their sum is divisible by k.
+int vt_sum = sum(vt.begin(), vt.end(), 0);
+
+
+approach 2:-
+O(n)
+
+my Solution (most optimised) :)
+we will use simple maths concept 
+if 4 % 5 = 4
+then if we add mulitple of 5 to 4 then it will give remainder as 4
+lets check 
+(4 + 5) % 5  = 4
+(4 + 10) % 5  = 4
+it signifies that if a number gives u remainder r  and after addition of x , it agains gives u remainder r -> this means that there must be multiple of dividend
+
+hence subarray possibe :)
+
+FEW MASTER STEP :-
+
+what if first element itself is multiple of divisor ??
+for that case mp[0] works pretty well :-
+mp[0] = 1
+
+if remaider < 0 
+then remainder = remainder + k;
+where k = divisor
+
+
+off beat :-
+to find value for an arbitrary key 
+two step process
+step 1 : check if key is present in map 
+step 2 : if yes then we will get c/s value
+
+code for steps
+// key is present in map 
+if(mp.find(key) != mp.end())
+{
+int val = mp.find(key);
+}
+
+
+
+*/
+
+
+
+
 class Solution {
 public:
     int subarraysDivByK(vector<int>& nums, int k) {
