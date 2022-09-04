@@ -5,4 +5,22 @@ approach 02 : using Dp,( my approach)
 
 for Being a square matrix, 
 if we at top-left or bottom-right and move along row and col and diag and encounters 1 at all movement then it is square matrix.
-for expansion of squre 
+for expansion of square matrix following condn must be satisfied :-
+
+01. next diag element must be 1
+02. must be adjacent
+03. move along row  then we  must have 1 for all movement.
+04. move along col  then we must have 1 for all movement.
+
+Data Structure Required :-
+01. matrix of dimension of  n + 1 and m + 1
+02. variable named maxi -> take care of largest dimension possible till now
+
+we will start filling from left to right for each row.
+
+How to fill the t matrix :-
+if we encounter 0 in org matrix then no expansion possible and fill the t with 0
+if we encounter 1 in org matrix then take min of row, col and diag + 1(why 1 ? bcz. by inclusion of element 1 square matrix of dimension 1 is already psbl :)
+
+
+
