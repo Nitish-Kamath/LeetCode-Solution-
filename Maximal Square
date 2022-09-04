@@ -1,1 +1,8 @@
-approach 01 :- using dfs , solution will be complex and may gives tle for few cases
+approach 01 :- using dfs , solution will be complex and may gives tle for few cases.
+
+
+approach 02 : using Dp,( my approach)
+
+for Being a square matrix, 
+if we at top-left or bottom-right and move along row and col and diag and encounters 1 at all movement then it is square matrix.
+for expansion of squre 
