@@ -1,16 +1,21 @@
 Link:-
 https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
 
-
 Topic:-
 backtracking(recursion with all possible solution
+
+DataStructure req:-
+matrix(for visited matrix)
+string ( for storing direction)
+2D Vector of string (for storing all possible path)
+vector of pair of int (for storing all the possible direction)
 
 we have to start from 0,0 and reach to n-1, n-1 
 
 //  FOR LEXICOGRAPHICALLY ORDER
 we have to move in DLRU fashion 
 
-following condn must be satisfied for movement to next cell :-
+Following condn must be satisfied for movement to next cell :-
 
 01. index must not go out of range
 02. next cell value must be 1
@@ -19,9 +24,32 @@ following condn must be satisfied for movement to next cell :-
 // if above condn satisfied then before moving to next cell 
 mark current cell as visietd 
 
-means if rat in current cell then is not visited as it leaves current cell then it is marked visited
+means if rat is in current cell then is not marked visited as it leaves current cell then it is marked visited.
 
+for current cell  since all four direction possible 
+we will check for direction [ D -> L -> R -> U ]
+if direction satisfied then move in that direction 
 
+what abt remanining direction??
+when we backtrack to given cell again , then we will cover the next remaining direction.
 
+when will backtrack occurs??
+when all possible direction is covered(may be get obstruction)  or reached to goal state then backtracking occurs.
+while backtracking happens then before moving to next cell mark them as unvisited.
 
+imp point:- 
+initially visited matrix is all zero  and finally also visited matrix is all zero.
 
+off Beat:-
+
+if 0,0 is at bottom_left then direction as D,L,R,U is :-
+vector<pair<int,int>> dir({0,-1},{-1,0},{1,0},{0,1});
+if 0,0 is at top_left then direction as D,L,R,U is :-
+vector<pair<int,int>> dir({1,0},{0,-1},{0,1},{-1,0});
+
+for(auto it : dir)
+{
+int x_dir = it.first;
+int y_dir = it.second;
+
+}
