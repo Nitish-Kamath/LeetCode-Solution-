@@ -22,5 +22,16 @@ How to fill the t matrix :-
 if we encounter 0 in org matrix then no expansion possible and fill the t with 0
 if we encounter 1 in org matrix then take min of row, col and diag + 1(why 1 ? bcz. by inclusion of element 1 square matrix of dimension 1 is already psbl :)
 
+Off Beat :- 
+find max of more than two element
+int maxi = max({1,3,7,3,5,2});
+
+intialise the 2D vector with 0
+vector<vector<int>> t( m+ 1, vector<int> (n +1 ),0);
+
+intialise the matrix with 0 
+memset(t,0, sizeof(t));
+// using memset we can fill matrix with only 0 and -1
+
 
 
