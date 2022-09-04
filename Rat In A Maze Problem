@@ -1,0 +1,27 @@
+Link:-
+https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
+
+
+Topic:-
+backtracking(recursion with all possible solution
+
+we have to start from 0,0 and reach to n-1, n-1 
+
+//  FOR LEXICOGRAPHICALLY ORDER
+we have to move in DLRU fashion 
+
+following condn must be satisfied for movement to next cell :-
+
+01. index must not go out of range
+02. next cell value must be 1
+03. next cell must not be visited
+
+// if above condn satisfied then before moving to next cell 
+mark current cell as visietd 
+
+means if rat in current cell then is not visited as it leaves current cell then it is marked visited
+
+
+
+
+
