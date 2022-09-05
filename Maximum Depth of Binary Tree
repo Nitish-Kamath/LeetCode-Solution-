@@ -8,12 +8,16 @@ class Solution {
 public:
     int maxDepth(TreeNode* root) {
     if(root == NULL)
+    //  YE 0 CALLING FUNCTION KO MILEGA
         return 0;
         
         int left =  maxDepth(root -> left);
         int right = maxDepth(root -> right);
         
+        
+        // YE VALUE ROOT ELEMENT KO MILEGA :))))))))))))))
         return max(left,right) + 1;
+        // YE VALUE ROOT ELEMENT KO MILEGA :)))))))))))))
         
        
     }
