@@ -1,0 +1,20 @@
+approach 01:-
+
+what we can do, since we are traversing so in order to get depth we will take return type as int
+and take max(left,right) + 1;
+that it:
+
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+    if(root == NULL)
+        return 0;
+        
+        int left =  maxDepth(root -> left);
+        int right = maxDepth(root -> right);
+        
+        return max(left,right) + 1;
+        
+       
+    }
+};
