@@ -1,0 +1,47 @@
+https://leetcode.com/problems/diameter-of-binary-tree/
+
+Question:-
+Given the root of a binary tree, return the length of the diameter of the tree.
+The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+The length of a path between two nodes is represented by the number of edges between them.
+
+Approach01:-
+what we have to do , we have to select any two node such that number of node between them is maximum.
+concept let if we have 7 node between any two node(including of edge node) then there will be 7 -1 = 6 edge between them.
+
+This question is extension of depth of binary Tree.
+
+
+
+
+About code:-
+return 1 + max(lh, rh) -> don't confuse this value will not be passed to main function bcz it is not accepted by the main function
+instead THERE IS HACK, we have passed a variable named maxi, this will ensure the final result, maxi value will be updated and when recursion ends, 
+maxi gets its required answer.
+
+one more point we have passed maxi as call by reference so to change the value present in main function
+conclusion:we can use call by reference for variable, array, matrix
+
+
+// agar aap lambe diagram ko samjhne jaaoge to kabhi nahi samajh paaoge,so better start with 03 node 
+
+class Solution {
+  public:
+    int traversal(TreeNode * root, int & maxi) {
+      if (root == NULL)
+        return 0;
+      int lh = traversal(root -> left, maxi);
+      int rh = traversal(root -> right, maxi);
+      maxi = max(maxi, lh + rh);
+      return 1 + max(lh, rh);
+    }
+
+  int diameterOfBinaryTree(TreeNode * root) {
+    int maxi = 0;
+    traversal(root, maxi);
+
+    return maxi;
+
+  }
+};
+
