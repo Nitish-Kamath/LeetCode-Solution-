@@ -1,0 +1,65 @@
+Tree me kuch aisa hota hai ki : -
+Tree me traversal hota hai and during the traversal we extract information.
+Traversal compulsory hota hai.
+
+for Traversal:- 
+// there are major two types
+dfs:- 
+inOrder
+preOrder
+postOrder
+
+bfs:-
+levelOrder
+
+// simple preorder be like using recursion
+//Take note of parent node(return gift to parent ko hi milega) and return type (return gift kya hoga kuch bhi nahi ya kuch value depends on return data type)
+
+// return type is void , return; hoga  in base case
+vector<int> res;
+void pre_order(TreeNode *root)
+{
+if(root == NULL)
+return ;
+
+res.push_back(TreeNode -> val);
+pre_order(TreeNode -> left):
+pre_order(TreeNode -> right);
+}
+
+// return type is int
+// since return value int hai to int value ko store karne ke liye int var ka use hoga, and rem return 0 hoga in base case
+
+int pre_order(TreeNode *root)
+{
+if(root == NULL)
+return 0;
+
+int lt = pre_order(TreeNode -> left):
+int rt = pre_order(TreeNode -> right);
+}
+
+
+
+sabse impt baat ye hai ki first recursive line dominating hota hai ye manmauji   ki tarah hota hai, hamesha iski hi chalti hai 
+and jab iski nahi chalti tv second traversal ko  EK BAAR mauka milata hai and uske baad check hoga ki manmauji ka chalega ki nahi agar path availabe hai to dada ki 
+chalega else 
+second recursion chalega
+
+//IMPT POINTS
+condition for first recurion -> root null nahi hona chahiye
+condition for second recursion -> first recursion ka jab man bhar jaaye (means when first recursion hits the base case and receives return value)
+condition for third recursion -> when second recurion hits base case
+
+aisa nahi ki tree me hamesha hi left, right hota hai ye tavi hota hai jab saamne path ho and node is not visited
+otherwise backtracking hota hai following the same path jaise ye yahan tak aaya hai 
+backtrack karte waqt ye bhi dekhega ki kya naya path availabe hai ya nahi if yes to go for it o/w backtrack hote rahega.
+
+//Tree ko master karne ke kuch points
+01. take note of return type
+02. always thinks in term of smallest possible tree(may be 03 nodes with root , root-> left , root-> right)
+03. don't traverse, following the code but rather traverse manually
+04. take note of parent node.
+05. if draw line for traversal then works 100 fine (tested) so better to draw line to check for order of traversal :)))))))))))
+
+
