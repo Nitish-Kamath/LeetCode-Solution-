@@ -1,0 +1,11 @@
+https://leetcode.com/problems/regular-expression-matching/
+
+This is class Question
+How is it dp ??
+we have to take decision and each step, gives feels of dp.
+
+Note . can be any single character it can be 'a','b' etc.
+
+a* meaning -> "","a","aa","aaa","aaa...."
+.* meaning -> "",".","..","...","...."
+// a*b* can be "","ab","aabb","aaab"  [ordering cann't be changed]
