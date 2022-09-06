@@ -1,0 +1,37 @@
+https://leetcode.com/problems/median-of-two-sorted-arrays/
+
+approach01 : we can merge them in one vector and then sort them and find median.
+Time Complexity would be O(nlogn)
+// formula for finding median 
+if len is odd then median is  vt[n/2]
+if len is even then median is (vt[n/2] + vt[n/2 +1])/2
+
+we can futher optimise it we can do like, we can use two pointer. Let i and j.
+i point to first vector and j point to second vector. we have to find min of two 
+and push into new vector.If we element is taken from first vector then i++ .
+if element is taken from second vector then j++.
+if element is same then push from any of the vector then do i++ and j++ simultanoulsy.
+
+What if any one of vector become empty then push other vector in final vector.
+space complexity would be O(n+m) and time complexity would be O(n + m).
+
+approach 02 : Do this same operation in O(log(n+m)).
+what we can do we will use take two bucket.
+In Both bucket element will be from vect1 and vect2.
+
+first of all find total length of two vector.
+let length be 10.
+In bucket one there would be 5 element and in bucket two there would be 5 element.
+
+using binary search in any of the vector(let vt1). 
+find mid index put element from start_index 
+to mid_index-1 from vt1 and remaining ( 5 - mid_index) element from vt2 in bucket1
+
+for remaining element from vt1 and vt2, put it into bucket2.
+Check if l1 <= r2 if yes then got it .
+Othewise if l1 is greater then do binary search again(end = mid -1).
+if condition is satisfied, then we have to find max(l1, l2) from bucket1 and min(r1,r1) from bucket2.
+the element that we get(let val1 and val2) is required then we would do like (val1 + val2)/2;
+
+
+
