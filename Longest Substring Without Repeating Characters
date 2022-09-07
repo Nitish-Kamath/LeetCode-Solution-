@@ -10,12 +10,32 @@ if yes :
 maxi = max(maxi, count)
 count = left -right
 left = left +1
-
-
-
 if No:
 count++;
 
+//HOW TO FIND CHARACTER IN STRING WITHIN GIVEN RANGE
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+
+    string str = "nitishkamath";
+    char ch = 't';
+    int left = 0;
+    int right = 2;
+    int idx = find(str.begin() + left, str.begin() + right + 1, ch) - str.begin();
+    if (idx != (right + 1 - left))
+    {
+        cout << "found @ " << idx << endl;
+    }
+    else
+    {
+        cout << "not found " << endl;
+    }
+    return 0;
+}
+***********************************************************************************************************************************************************
 
 approach 02 :
 // ye question karke dil khus ho gaya
