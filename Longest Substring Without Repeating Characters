@@ -1,0 +1,54 @@
+https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+
+approach 01 : what we can do we will use two pointer to solve the problem, one we will have left pointer and one we will have right pointer 
+right pointer will behave as advancing pointer.
+left pointer will take care of the starting index of the substring.
+
+we will traverse using right pointr, and check if character is present in left , righ-1 substring 
+if yes :
+maxi = max(maxi, count)
+count = left -right
+left = left +1
+
+
+
+if No:
+count++;
+
+
+approach 02 :
+// ye question karke dil khus ho gaya
+// what we can do we can use a map to store character and their frequency.
+kisi bhi waqt, map ke andar wahi element present hoga which is substring as satisfied by the condition.
+jab bhi end char ka freq 2  ho jaaye in that case we have to decrease frequency  starting from start untill end freq 1 na ho jaaye 
+then we have to store max of (count, end - start + 1)
+why end - start + 1 bcz as we have to store the length of substring possible.
+
+note : you can ktake ordered as well as unordered_map .
+
+class Solution
+{
+public:
+    int lengthOfLongestSubstring(string str)
+    {
+        map<char, int> mp;
+        int count = 0;
+        int start = 0;
+
+        for (int end = 0; end < str.size(); end++)
+        {
+            mp[str[end]]++;
+
+            while (mp[str[end]] > 1)
+            {
+                mp[str[start]]--;
+                start++;
+            }
+
+            count = max(count, end - start + 1);
+        }
+        return count;
+    }
+};
+
