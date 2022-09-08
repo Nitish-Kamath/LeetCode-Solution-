@@ -1,0 +1,43 @@
+sliding window maximum format
+
+// two types of question possible  on sliding window
+type01 : sliding window of fixed size
+type02 : sliding window of variable size
+
+concept :-
+basically issme two pointer hota hai one is left and other is right pointer 
+right- left + 1 = k(sliding window size)
+// impt point ye hai ki if we have to find length then we take diff of two pointer and then add 1 to it.
+int i = 0;
+int j = 0;
+
+while( j< nums.size())
+{
+
+calcn
+
+if(j - i  + 1 == k)
+{
+
+ans <- calcn
+remove calculation for removed element
+i++;
+
+}
+j++;
+
+}
+
+// some impt point to be noted
+total number of ans possible  = nums.size() + 1 - k
+what is brute force calculation :- 
+we are doing the operation for same element again and again.
+for brute force code would run as :
+for(int i = 0; i < nums.size() - (k -1) ; i++)
+{
+for(int j = i ; j < i + k; j++)
+{
+calcn on the same element.
+}
+}
+
