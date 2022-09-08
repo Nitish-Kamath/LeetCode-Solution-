@@ -1,0 +1,88 @@
+approach01 : 
+what we can do, we will use concept of sliding window.
+Basically we have to catch one is to find calcn and other is to find ans from calcn.
+
+what case can be possible :-
+if max_ele is not at index i -1 and max_ele > nums[j]  -> no problem 
+if max_ele is not at index i -1 and max_ele <= nums[j]  -> no problem but max_ele would be updated i.e. max_ele = nums[j]
+if max_ele is at index i -1 and max_ele > nums[j]   -> problem in that case we have to take second maximum element from list.
+if max_ele is at index i -1 and max_ele <= nums[j]  -> no problem
+
+so there might be problem so will be using queue(insertion at rear_end and deletion at front_end).
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+one edge case may be added 
+what if k > nums.size()
+
+// list is actually bhai of dequeue
+// list<int> lst;
+
+lst.push_back()  -> insert elemet at rear end
+lst.push_front() -> insert elment at fron end
+lst.pop_back()   -> delete element from rear end
+lst.pop_front() -> delete element from front end
+lst.back()      -> display element present at rear end
+lst.front()     -> display elment present at front end 
+
+
+class Solution
+{
+public:
+    vector<int> maxSlidingWindow(vector<int> &nums, int k)
+
+    {
+        int i = 0;
+        int j = 0;
+        
+        list<int> lst;
+        vector<int> res;
+        
+        
+        // what if k > nums.size() ie. sliding window size greater than nums size
+        if( k > nums.size())
+        {
+          int val = *max_element(vt.begin(),vt.end());  
+          res.push_back(val);
+        }
+          return res;
+
+        while (j < nums.size())
+        {
+  
+          // if lst contains element smaller than current value then it should be popped out(elemnet is of no  use)
+          // since first element should be max
+          // note that :- list contains elment in sorted order in descending order :) 
+          
+            while (lst.size() > 0 and lst.back() < nums[j])
+            {
+                lst.pop_back();
+            }
+            // since all smaller element greater than current element is popped out now add current element (which is max till now)
+            lst.push_back(nums[j]);
+
+            if (j - i + 1 == k)
+            {
+                res.push_back(lst.front());
+                
+                // this line is most important 
+                // since now we want to slide to next window :) wait -> we have to remove calculation for removed element
+                // since nums[i] may be max element, now since we are moving to next window 
+                // so we need to remove element from list
+                if (lst.front() == nums[i])
+                {
+                    lst.pop_front();
+                }
+
+                i++;
+            }
+            j++;
+        }
+        return res;
+    }
+};
+
+
+
