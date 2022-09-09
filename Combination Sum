@@ -1,0 +1,37 @@
+// for a question if we have to print all the combination of given array ->thought of recursion
+// we have to think in terms in tersm of whether to pick or not.
+
+function calll may be
+fn(index, target, ds)
+
+// we start with index 0 and check if want to pick or not
+// what if element is picked :-
+then index will be same , target value reduces by nums[index] and we have to push element in data Structure.
+fn(index, target- nums[index], ds[after nums[i] in ds)
+BEFORE PICKING INDEX ONE THING MUST BE CHECKED :-
+nums[index] <= target
+if condition satisfied then only we can pick element.
+
+// what if element is not picked:-
+then index will increases by one target not reduces and no element is added to ds.
+fn(index + 1 , target,ds)
+notes : - we move to next index, by not picking current element
+we always start with 0 index, and by not picking element and stack space we reached to last index.
+
+//
+
+
+
+// when we reach at last index and and target != 0 then we backtrack till last picked then remove the picked elment from datastructure 
+before going to next recursion.
+
+
+// it may be the case that you want to pick but cann't do so bcz target < nums[index] in that case you have to go for not pick option.
+// recursion can be interpreted in two ways :- 
+if target becomes zero -> then you immediately stop
+if target becomes zero -> then you dont stop rather you go till last index (but it will not hamper datastructure bcz target < nums[index} so recursion will 
+always call for non pick and go on increasing index.
+and as we reached last index then we check 
+if index == last_index(of course yes ) and target == 0
+if yes push ds ans in other data structure 
+if no  backtrack. 
