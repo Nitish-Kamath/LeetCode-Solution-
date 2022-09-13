@@ -63,3 +63,217 @@ backtrack karte waqt ye bhi dekhega ki kya naya path availabe hai ya nahi if yes
 05. if draw line for traversal then works 100 fine (tested) so better to draw line to check for order of traversal :)))))))))))
 
 
+//always rem code for bfs of graph (help in level order traversal, right view, left view) , dfs of graph
+//always rem code for preorder, inorder, postorder traversal and level order traversal.
+
+to stop recursion,we cann't do but we can use flag variable for that purpose.
+in recursion along with passing of root, also pass flag variable and run the recurion if flag == 0 
+if we get required item set flag = 1
+so since we get required key recursion will not be called further :)
+
+// sabse impt baat 
+kitne saare question me ye concept lagte hai ki 
+ki hame bfs karne hote hai(graph wala)
+when we are putting all the element in queue
+then what we can do, we can find q.size() // BAHUT BADA HATIYAAR HAI YE (BEST EX : LEVEL ORDER USING ITERATION)
+then we can use for loop starting start index to q.size() to do many thing
+like for right view(rem root -> right then root -> left)
+if(i == 0)
+----
+like for left view(rem root -> left then root -> right)
+if(i == 0)
+------
+
+bfs sun ke ye khyaal aana chahiye
+queue<TreeNode *> q;
+vector<int> res;
+q.push(root);
+while(!q.empty())
+{
+TreeNode * temp = q.front();
+q.pop();
+// kayde se ab res.push_back(temp -> val) karna chahiye but better once look for it kahan pe ye karna hai 
+// ho sakta hai ki hame ye karna ho
+if(root -> left != NULL)
+q.push(root->left);
+if(root -> right != NULL)
+q.push(root -> right);
+res.push_back(temp-> val);
+}
+
+
+// bfs traversal of graph
+
+#include <bits/stdc++.h>
+
+using namespace std;
+class Solution {
+  public:
+    vector < int > bfsOfGraph(int V, vector < int > adj[]) {
+      vector < int > bfs;
+      vector < int > vis(V, 0);
+      queue < int > q;
+      q.push(0);
+      vis[0] = 1;
+      while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        bfs.push_back(node);
+
+        for (auto it: adj[node]) {
+          if (!vis[it]) {
+            q.push(it);
+            vis[it] = 1;
+          }
+        }
+      }
+
+      return bfs;
+    }
+};
+
+void addEdge(vector < int > adj[], int u, int v) {
+  adj[u].push_back(v);
+  adj[v].push_back(u);
+}
+
+void printAns(vector < int > & ans) {
+  for (int i = 0; i < ans.size(); i++) {
+    cout << ans[i] << " ";
+  }
+}
+int main() {
+  vector < int > adj[5];
+
+  addEdge(adj, 0, 1);
+  addEdge(adj, 0, 2);
+  addEdge(adj, 0, 3);
+  addEdge(adj, 2, 4);
+
+  Solution obj;
+  vector < int > ans = obj.bfsOfGraph(5, adj);
+  printAns(ans);
+  cout << endl;
+
+  return 0;
+}
+
+//Dfs Traversal of Graph
+
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+    void dfs(int node, vector<int> &vis, vector<int> adj[], vector<int> &storeDfs) {
+        storeDfs.push_back(node); 
+        vis[node] = 1; 
+        for(auto it : adj[node]) {
+            if(!vis[it]) {
+                dfs(it, vis, adj, storeDfs); 
+            }
+        }
+    }
+public:
+	vector<int>dfsOfGraph(int V, vector<int> adj[]){
+	    vector<int> storeDfs; 
+	    vector<int> vis(V+1, 0); 
+      for(int i = 1;i<=V;i++) {
+        if(!vis[i]) dfs(i, vis, adj, storeDfs); 
+      }
+	    return storeDfs; 
+	}
+};
+ 
+void addEdge(vector<int> adj[],int u,int v)
+{
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+int main()
+{
+    vector<int> adj[6];
+    
+    addEdge(adj,1,2);
+    addEdge(adj,1,3);
+    addEdge(adj,1,4);
+    addEdge(adj,1,5);
+    addEdge(adj,2,4);
+    addEdge(adj,2,1);
+    addEdge(adj,3,1);
+    addEdge(adj,4,1);
+    addEdge(adj,4,2);
+    addEdge(adj,5,1);
+    Solution obj;
+    vector<int> df;
+    df= obj.dfsOfGraph(5, adj);
+    for(auto it: df)
+    cout<<it<<" ";
+ 
+    return 0;
+}
+
+// level order traversal 
+
+// using recursion
+
+class Solution {
+public:
+    vector<int> levelOrder(TreeNode* root) {
+        vector<int> ans; 
+        
+        if(root == NULL) 
+            return ans; 
+            
+        queue<TreeNode*> q; 
+        q.push(root); 
+        
+        while(!q.empty()) {
+           
+            TreeNode *temp = q.front(); 
+            q.pop(); 
+            
+            if(temp->left != NULL) 
+                q.push(temp->left); 
+            if(temp->right != NULL) 
+                q.push(temp->right); 
+                
+            ans.push_back(temp->val); 
+        }
+        return ans; 
+    }
+};
+
+// using iteration
+class Solution
+{
+public:
+    vector<vector<int>> levelOrder(TreeNode *root)
+    {
+        vector<vector<int>> ans;
+
+        if (root == NULL)
+            return ans;
+
+        queue<TreeNode *> q;
+        q.push(root);
+
+        while (!q.empty())
+        {
+            int size = q.size();
+            vector<int> level;
+            for (int i = 0; i < size; i++)
+            {
+                TreeNode *node = q.front();
+                q.pop();
+
+                if (node->left != NULL)
+                    q.push(node->left);
+                if (node->right != NULL)
+                    q.push(node->right);
+
+                level.push_back(node->val);
+            }
+            ans.push_back(level);
+        }
+        return ans;
+    }
+};
