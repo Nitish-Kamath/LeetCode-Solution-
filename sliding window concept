@@ -8,6 +8,8 @@ concept :-
 basically issme two pointer hota hai one is left and other is right pointer 
 right- left + 1 = k(sliding window size)
 // impt point ye hai ki if we have to find length then we take diff of two pointer and then add 1 to it.
+
+// fixed Size format
 int i = 0;
 int j = 0;
 
@@ -15,16 +17,20 @@ while( j< nums.size())
 {
 
 calcn
+if(win_size < k)
+{
+    j++;
+}
 
-if(j - i  + 1 == k)
+if(win_size == k)
 {
 
 ans <- calcn
-remove calculation for removed element
+remove calculation for  element to be removed
 i++;
+j++;
 
 }
-j++;
 
 }
 
@@ -39,5 +45,32 @@ for(int j = i ; j < i + k; j++)
 {
 calcn on the same element.
 }
+}
+
+
+// variable size format
+while(j < size)
+{
+    calcn
+
+    if(condn < k)
+    {
+        j++;
+    }
+    else if(condn == k)
+    {
+        ans <- calcn
+        j++;
+    }
+    else if(cond > k)
+    {
+        while(cond > k)
+        {
+            remove calcn for i
+            i++
+        }
+        j++
+    }
+    return ans;
 }
 
