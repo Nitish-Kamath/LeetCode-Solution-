@@ -20,7 +20,7 @@ FOR FIDING ANY KEY- VALUE
 
 if(mp.find(key) != mp.end())
 {
-return mp.find(key);
+return mp[key];
 }
 
 
